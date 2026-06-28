@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { SiGithub, SiZoom, SiGooglechrome, SiWhatsapp, SiSlack, SiGmail } from 'react-icons/si'
+import { FaRegCalendarAlt } from 'react-icons/fa'
+import { VscVscode } from 'react-icons/vsc'
 
 export default function HomePage() {
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false)
@@ -113,18 +116,32 @@ export default function HomePage() {
 
       {/* ticker */}
       <div className="wrap" style={{ paddingTop: 0, paddingBottom: 0 }}>
-        <div className="ticker">
-          <div className="ticker-item"><span className="dot" style={{ width: '5px', height: '5px', background: 'var(--color-lime)' }}></span> <b>Ollama</b>&nbsp;local LLM</div>
-          <div className="ticker-item"><b>Claude Haiku</b>&nbsp;free tier</div>
-          <div className="ticker-item"><b>Claude Sonnet</b>&nbsp;pro</div>
-          <div className="ticker-item"><b>GPT-4o</b>&nbsp;pro+</div>
-          <div className="ticker-item"><b>Whisper</b>&nbsp;STT local</div>
-          <div className="ticker-item"><b>Playwright</b>&nbsp;browser</div>
-          <div className="ticker-item"><b>PyAutoGUI</b>&nbsp;input</div>
-          <div className="ticker-item"><b>Tesseract</b>&nbsp;OCR</div>
-          <div className="ticker-item"><b>AppleScript</b>&nbsp;·&nbsp;<b>PowerShell</b></div>
-          <div className="ticker-item"><b>Supabase</b>&nbsp;auth</div>
-          <div className="ticker-item"><b>Stripe</b>&nbsp;billing</div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ paddingRight: '22px', fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--color-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+            Works in
+          </div>
+          <div className="ticker-wrap" style={{ borderLeft: '1px solid var(--color-wire)' }}>
+            <div className="ticker">
+              {/* Set 1 */}
+              <div className="ticker-item no-border"><SiGithub color="#ffffff" /> <b>GitHub</b></div>
+              <div className="ticker-item"><FaRegCalendarAlt color="#ffffff" /> <b>Calendar</b></div>
+              <div className="ticker-item"><SiZoom color="#2D8CFF" /> <b>Zoom</b></div>
+              <div className="ticker-item"><SiGooglechrome color="#4285F4" /> <b>Browser</b></div>
+              <div className="ticker-item"><VscVscode color="#007ACC" /> <b>VS Code</b></div>
+              <div className="ticker-item"><SiWhatsapp color="#25D366" /> <b>WhatsApp</b></div>
+              <div className="ticker-item"><SiSlack color="#E01E5A" /> <b>Slack</b></div>
+              <div className="ticker-item"><SiGmail color="#EA4335" /> <b>Gmail</b></div>
+              {/* Set 2 for seamless loop */}
+              <div className="ticker-item"><SiGithub color="#ffffff" /> <b>GitHub</b></div>
+              <div className="ticker-item"><FaRegCalendarAlt color="#ffffff" /> <b>Calendar</b></div>
+              <div className="ticker-item"><SiZoom color="#2D8CFF" /> <b>Zoom</b></div>
+              <div className="ticker-item"><SiGooglechrome color="#4285F4" /> <b>Browser</b></div>
+              <div className="ticker-item"><VscVscode color="#007ACC" /> <b>VS Code</b></div>
+              <div className="ticker-item"><SiWhatsapp color="#25D366" /> <b>WhatsApp</b></div>
+              <div className="ticker-item"><SiSlack color="#E01E5A" /> <b>Slack</b></div>
+              <div className="ticker-item"><SiGmail color="#EA4335" /> <b>Gmail</b></div>
+            </div>
+          </div>
         </div>
       </div>
 

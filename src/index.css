@@ -211,12 +211,51 @@ nav {
 }
 
 /* ══════════════════ TICKER ══════════════════ */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Gradient masks for smooth fade on edges */
+.ticker-wrap::before,
+.ticker-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.ticker-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-ink) 0%, transparent 100%);
+}
+.ticker-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-ink) 0%, transparent 100%);
+}
+
 .ticker {
   display: flex;
   align-items: center;
   gap: 0;
-  overflow: hidden;
+  width: max-content;
+  animation: ticker-scroll 30s linear infinite;
 }
+
+.ticker:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .ticker-item {
   display: flex;
   align-items: center;
@@ -230,8 +269,10 @@ nav {
   height: 42px;
   gap: 6px;
 }
-.ticker-item:first-child { border-left: none; }
+.ticker-item:first-child, .ticker-item.no-border { border-left: none; }
 .ticker-item b { color: var(--color-muted); font-weight: 400; }
+.ticker-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
 
 /* ══════════════════ FOOTER ══════════════════ */
 .footer-inner {
