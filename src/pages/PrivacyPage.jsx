@@ -8,6 +8,17 @@ import ContactSection from '../components/legal/ContactSection'
 import BackToTop from '../components/legal/BackToTop'
 import { privacySections, privacyFaqs } from '../data/privacyData'
 
+function formatMarkdown(text) {
+  if (!text) return '';
+  const parts = text.split(/(\*\*.*?\*\*)/);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 export default function PrivacyPage() {
   const wordCount = privacySections.reduce((acc, curr) => {
     const textWords = curr.content ? curr.content.split(/\s+/).length : 0
@@ -45,11 +56,11 @@ export default function PrivacyPage() {
                   if (para.startsWith('- ')) {
                     return (
                       <ul key={pIdx} className="legal-bullets">
-                        <li>{para.substring(2)}</li>
+                        <li>{formatMarkdown(para.substring(2))}</li>
                       </ul>
                     )
                   }
-                  return <p key={pIdx}>{para}</p>
+                  return <p key={pIdx}>{formatMarkdown(para)}</p>
                 })}
               </div>
 
