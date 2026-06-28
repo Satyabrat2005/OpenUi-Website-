@@ -20,10 +20,11 @@ export default function TermsPage() {
       <ReadingProgress />
 
       <LegalHero
-        title="Terms of Service"
+        title={<>Terms of <span style={{ color: 'var(--color-lime)' }}>Service</span></>}
         subtitle="Please read these Terms of Service carefully before installing or using our desktop automation platform and AI agent tools."
         lastUpdated="June 28, 2026"
         wordCount={wordCount}
+        hideActions={true}
       />
 
       <div className="wrap legal-layout-grid">
