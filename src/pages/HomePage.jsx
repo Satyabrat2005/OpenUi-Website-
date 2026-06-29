@@ -3,6 +3,125 @@ import { SiGithub, SiZoom, SiGooglechrome, SiWhatsapp, SiSlack, SiGmail } from '
 import { FaRegCalendarAlt } from 'react-icons/fa'
 import { VscVscode } from 'react-icons/vsc'
 
+const ImageComparisonSlider = ({ withImage, withoutImage }) => {
+  const [sliderPos, setSliderPos] = useState(50);
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '220px', overflow: 'hidden', borderRadius: '12px', userSelect: 'none', backgroundColor: 'var(--color-bg-alt)' }}>
+      {/* Right Image (Background / Without) */}
+      <img src={withoutImage} alt="Without" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} draggable="false" />
+      
+      {/* Left Image (Foreground / With) */}
+      <div style={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        width: '100%', 
+        height: '100%', 
+        clipPath: `inset(0 ${100 - sliderPos}% 0 0)` 
+      }}>
+        <img src={withImage} alt="With" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} draggable="false" />
+      </div>
+
+      {/* Range Input */}
+      <input 
+        type="range" 
+        min="0" 
+        max="100" 
+        value={sliderPos} 
+        onChange={(e) => setSliderPos(e.target.value)}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          opacity: 0,
+          cursor: 'ew-resize',
+          zIndex: 10,
+          margin: 0
+        }}
+      />
+
+      {/* Slider Line & Handle */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: `${sliderPos}%`,
+        width: '2px',
+        backgroundColor: '#1c1c1c',
+        pointerEvents: 'none',
+        transform: 'translateX(-50%)',
+        zIndex: 5
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '32px',
+          height: '32px',
+          borderRadius: '50%',
+          backgroundColor: '#2d2d2d',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff',
+          boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+          border: '1px solid #1c1c1c'
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M10 17l-5-5 5-5 M14 17l5-5-5-5" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Labels */}
+      <div style={{
+        position: 'absolute',
+        top: '12px',
+        left: '12px',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: 'blur(4px)',
+        WebkitBackdropFilter: 'blur(4px)',
+        color: '#fff',
+        padding: '6px 10px',
+        borderRadius: '6px',
+        fontSize: '11px',
+        fontWeight: 600,
+        pointerEvents: 'none',
+        zIndex: 5,
+        opacity: sliderPos > 30 ? 1 : 0,
+        transition: 'opacity 0.2s',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+      }}>
+        Visible to you
+      </div>
+      <div style={{
+        position: 'absolute',
+        top: '12px',
+        right: '12px',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: 'blur(4px)',
+        WebkitBackdropFilter: 'blur(4px)',
+        color: '#fff',
+        padding: '6px 10px',
+        borderRadius: '6px',
+        fontSize: '11px',
+        fontWeight: 600,
+        pointerEvents: 'none',
+        zIndex: 5,
+        opacity: sliderPos < 70 ? 1 : 0,
+        transition: 'opacity 0.2s',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+      }}>
+        Invisible to others
+      </div>
+    </div>
+  );
+};
+
 export default function HomePage() {
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false)
   const [waitlistLoading, setWaitlistLoading] = useState(false)
@@ -189,8 +308,8 @@ export default function HomePage() {
             {/* macOS */}
             <div className="platform-col" style={{ paddingLeft: 0 }}>
               <p className="label" style={{ marginBottom: '28px' }}>macOS</p>
-              <div className="placeholder" style={{ width: '100%', height: '220px', marginBottom: '32px' }}>
-                <span>[ Mac UI screenshot ]</span>
+              <div style={{ width: '100%', aspectRatio: '16/10', marginBottom: '32px' }}>
+                <ImageComparisonSlider withImage="/images/mac_with.webp" withoutImage="/images/mac_without.webp" />
               </div>
               <h3 className="display" style={{ fontSize: '28px', marginBottom: '14px', lineHeight: 1.05 }}>Universal binary.</h3>
               <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.75, maxWidth: '300px' }}>
@@ -205,8 +324,8 @@ export default function HomePage() {
             {/* Windows */}
             <div className="platform-col" style={{ paddingRight: 0 }}>
               <p className="label" style={{ marginBottom: '28px' }}>Windows</p>
-              <div className="placeholder" style={{ width: '100%', height: '220px', marginBottom: '32px' }}>
-                <span>[ Windows UI screenshot ]</span>
+              <div style={{ width: '100%', aspectRatio: '16/10', marginBottom: '32px' }}>
+                <ImageComparisonSlider withImage="/images/win_with.webp" withoutImage="/images/win_without.webp" />
               </div>
               <h3 className="display" style={{ fontSize: '28px', marginBottom: '14px', lineHeight: 1.05 }}>System tray native.</h3>
               <p style={{ fontSize: '13px', color: 'var(--color-muted)', lineHeight: 1.75, maxWidth: '300px' }}>
