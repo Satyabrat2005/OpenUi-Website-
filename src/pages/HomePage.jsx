@@ -69,14 +69,18 @@ export default function HomePage() {
       {/* ══════════════════ APP VISUAL ══════════════════ */}
       <section style={{ padding: '32px 0' }}>
         <div className="wrap">
-          <div className="placeholder" style={{ height: '440px', position: 'relative' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '34px', background: '#0d0c0a', borderBottom: '1px solid var(--color-wire)', display: 'flex', alignItems: 'center', padding: '0 14px', gap: '7px' }}>
+          <div className="placeholder" style={{ padding: 0, overflow: 'hidden', display: 'block' }}>
+            <div style={{ height: '34px', background: '#0d0c0a', borderBottom: '1px solid var(--color-wire)', display: 'flex', alignItems: 'center', padding: '0 14px', gap: '7px' }}>
               <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#2a2a26' }}></div>
               <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#2a2a26' }}></div>
               <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#2a2a26' }}></div>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: '#2a2a26', margin: '0 auto' }}>OpenUI</span>
             </div>
-            <span>[ App screenshot / demo  ·  1160 × 440 ]</span>
+            <iframe 
+              src="/desktop-demo.html" 
+              style={{ width: '100%', aspectRatio: '16/9', border: 'none', display: 'block' }} 
+              title="OpenUI Demo"
+            />
           </div>
         </div>
       </section>
