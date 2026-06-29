@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function CheckIcon() {
   return (
     <span className="icon check" aria-hidden="true">
@@ -112,14 +114,24 @@ export default function PricingCard({ plan, billingPeriod }) {
       {plan.note && <p className="plan-note">{plan.note}</p>}
 
       <div className="plan-btn">
-        {plan.buttonStyle === 'primary' ? (
-          <button className="btn-white" style={{ width: '100%', justifyContent: 'center' }}>
+        {plan.isCustom ? (
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=neurotitanholdings@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={plan.buttonStyle === 'primary' ? "btn-white" : "btn-ghost"}
+            style={{ width: '100%', justifyContent: 'center', display: 'flex', textDecoration: 'none' }}
+          >
             {plan.buttonText}
-          </button>
+          </a>
         ) : (
-          <button className="btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>
+          <Link
+            to="/#demo"
+            className={plan.buttonStyle === 'primary' ? "btn-white" : "btn-ghost"}
+            style={{ width: '100%', justifyContent: 'center', display: 'flex', textDecoration: 'none' }}
+          >
             {plan.buttonText}
-          </button>
+          </Link>
         )}
       </div>
     </div>

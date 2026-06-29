@@ -27,10 +27,10 @@ export default function PricingCTA() {
           Start for free today and upgrade whenever your workflow grows.
         </p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          <Link to="/" className="btn-white">
+          <Link to="/#demo" className="btn-white">
             Get Started Free
           </Link>
-          <a href="mailto:sales@openui.com" className="btn-ghost">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=neurotitanholdings@gmail.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">
             Contact Sales
           </a>
         </div>
