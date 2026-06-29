@@ -132,7 +132,7 @@ export default function HomePage() {
     try {
       const name = e.target.elements.name.value
       const email = e.target.elements.email.value
-      const response = await fetch('/api/waitlist', {
+      const response = await fetch('https://hook.us2.make.com/rbsknjdb1rwqn2w26e19usdc2rz37ue4', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email })
@@ -382,7 +382,7 @@ export default function HomePage() {
               )}
 
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--color-faint)', marginTop: '14px' }}>
-                No spam · Unsubscribe any time
+                Book a 15-min demo
               </p>
             </div>
           </div>
